@@ -1,8 +1,51 @@
 import FooterComponent from "../components/FooterComponent";
 import NavComponent from "../components/NavComponent";
-import { Container, Row, Col, Form, Card, Button } from "react-bootstrap";
+import { Container, Row, Col, Form, Card, Button, Nav,  } from "react-bootstrap";
+import { useState } from "react";
+
+
 
 const infoPage = () => {
+
+    const [activeKey, setActiveKey] = useState('transfer');
+    const [index, setIndex] = useState(0);
+
+    const handleSelect = (selectedKey) => {
+        setActiveKey(selectedKey);
+    };
+
+    const renderContent = () => {
+        if (activeKey === "transfer") {
+            return (
+                <Card className="metode">
+                    <img src="../src/assets/bankbri.png" alt="" />
+                    <h6>Bank Bri</h6>
+                    <h5>147258369</h5>
+                    <p>a.n dreams Indonesia</p>
+                </Card>
+            );
+        } else if (activeKey === "Bni") {
+            return (
+                <Card className="metode">
+                    <img src="../src/assets/bankbni.png" alt="" />
+                    <h6>Bank Bni</h6>
+                    <h5>147258369</h5>
+                    <p>a.n dreams Indonesia</p>
+                </Card>
+            );
+        } else if (activeKey === "Bca") {
+            return (
+                <Card>
+                    <img src="../src/assets/bankbca1.png" alt="" />
+                    <h6>Bank bca</h6>
+                    <h5>147258369</h5>
+                    <p>a.n dreams Indonesia</p>
+                </Card>
+            );
+
+        }
+    }
+
     return (
         <>
             <div className="info">
@@ -13,27 +56,34 @@ const infoPage = () => {
                             <Col lg={8}>
                                 <Form action="/bayar">
                                     <div className="title">
-                                        <h5>Detail Pemesan</h5>
+                                        <h5>Detail Pemesanan</h5>
                                         <p>Detail ini akan digunakan memastikan Pemesanan</p>
                                     </div>
 
-                                    <Card>
+                                    <Row>
 
-                                        
+                                        <Col lg={4}>
+                                            <div className="deskripsi-hero">
+                                                <img src="../src/assets/img-cake-mufin.png" className="img-thumbnail" alt="..."></img>
+                                            </div>
+                                        </Col>
+                                        <Col lg={8}>
+                                            <div className="deskripsi-hero">
+                                                <h1>Cake Mufin</h1>
+                                                <h5>Jumlah Kue : 5</h5>
+                                                <h5>SubTotal : 220.000</h5>
 
-                                        <Form.Label>Nama Lengkap</Form.Label>
-                                        <Form.Control type="text" placeholder="Masukkan Nama Lengkap" name="nama" required></Form.Control>
+                                            </div>
 
-                                        <Form.Label>Nomor Telepon</Form.Label>
-                                        <Form.Control type="text" placeholder="Masukkan Nomor Telepon" name="telp" required></Form.Control>
 
-                                        <Form.Label>Email</Form.Label>
-                                        <Form.Control type="email" placeholder="Masukkan Email" name="telp" required></Form.Control>
 
-                                    </Card>
+                                        </Col >
 
+                                    </Row>
+
+
+                                    <Button href="/profil" variant="btn btn-utama">LIhat pesanan</Button>
                                     
-                                    <Button type="submit" variant="btn btn-utama w-100 mt-3">Lanjut Bayar</Button>
                                 </Form>
                                 <p className="text-secondary mt-3">*Pastikan data sudah terisi dengan benar sebelum melanjutkan.</p>
                             </Col>
@@ -45,15 +95,32 @@ const infoPage = () => {
                                             <h5>Budi</h5>
                                         </Col>
                                         <Col lg={6}>
-                                            <p>Jenis Kue</p>
-                                            <h5>Cake blackforest</h5>
+                                            <p>Nomor Telepon</p>
+                                            <h5>0986778766</h5>
+                                        </Col>
+
+                                    </Row>
+                                    <Row>
+                                        <Col lg={12}>
+                                            <p>Email</p>
+                                            <h5>Budi@gmail.com</h5>
                                         </Col>
                                     </Row>
                                     <hr />
-                                    <p>Tanggal Pengambilan Kue</p>
-                                    <h5>Jumat, 9 Agustus 2024</h5>
-                                    <p>Waktu Pengambilan Kue</p>
-                                    <h5>10.00</h5>
+                                    <p>Alamat Pengiriman</p>
+                                    <Form>
+                                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                            <Form.Control type="text" placeholder="masukkan alamat" />
+                                        </Form.Group>
+                                        
+                                    </Form>
+                                    <p>Pilih Pembayaran</p>
+                                    <Form.Select aria-label="Default select example">
+                                        <option>Open this select menu</option>
+                                        <option value="1">Transfer Bank</option>
+                                        <option value="2">Langsung</option>
+                                    </Form.Select>
+
                                     <hr />
                                     <Row className="mt-3">
                                         <Col lg={6}>
@@ -64,11 +131,38 @@ const infoPage = () => {
                                         </Col>
                                     </Row>
                                 </Card>
+                                <Row>
+                        <Col lg={8}>
+                            <h5 className="mt-5">Pilih metode pembayaran</h5>
+                            <Nav variant="pills" activeKey={activeKey} onSelect={handleSelect}>
+                                <Nav.Item>
+                                    <Nav.Link eventKey="transfer">BRI</Nav.Link>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <Nav.Link eventKey="Bni">BNI</Nav.Link>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <Nav.Link eventKey="Bca">BCA</Nav.Link>
+                                </Nav.Item>
+                            </Nav>
+                        </Col>
+
+                    </Row>
+
+                    <Row>
+                        <Col lg={8}>
+                            {activeKey === "transfer" && renderContent()}
+                            {activeKey === "Bni" && renderContent()}
+                            {activeKey === "Bca" && renderContent()}
+                        </Col>
+                        
+                    </Row>
                             </Col>
+                            
                         </Row>
                     </Container>
                 </div>
-                <FooterComponent/>
+                <FooterComponent />
             </div>
         </>
     );

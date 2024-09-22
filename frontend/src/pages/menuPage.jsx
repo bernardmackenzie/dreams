@@ -1,6 +1,6 @@
 import NavComponent from "../components/NavComponent";
 import { Container, Row, Col, Button, Card } from "react-bootstrap"
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import PromoComponent from "../components/PromoComponent";
 import FooterComponent from "../components/FooterComponent";
 
@@ -39,7 +39,8 @@ const menuPage = () => {
                                             </Col>
                                             <Col lg={6}>
                                                 <Card.Text>Harga </Card.Text>
-                                                <Card.Title className="cost">IDR 210K</Card.Title>
+                                                {/* <Card.Title className="cost">IDR 210K</Card.Title> */}
+                                                <Link to="/keranjang"> IDR 210K</Link>
                                             </Col>
                                         </Row>
                                     </Card.Body>
@@ -56,7 +57,8 @@ const menuPage = () => {
                                             </Col>
                                             <Col lg={6}>
                                                 <Card.Text>Harga </Card.Text>
-                                                <Card.Title className="cost">IDR 20K</Card.Title>
+                                                {/* <Card.Title className="cost">IDR 20K</Card.Title> */}
+                                                <Link to="/keranjang"> IDR 20K</Link>
                                             </Col>
 
                                         </Row>
@@ -74,7 +76,8 @@ const menuPage = () => {
                                             </Col>
                                             <Col lg={6}>
                                                 <Card.Text>Harga </Card.Text>
-                                                <Card.Title className="cost">IDR 205K</Card.Title>
+                                                {/* <Card.Title className="cost">IDR 205K</Card.Title> */}
+                                                <Link to="/keranjang"> IDR 205K</Link>
                                             </Col>
                                         </Row>
                                     </Card.Body>
@@ -91,7 +94,8 @@ const menuPage = () => {
                                             </Col>
                                             <Col lg={6}>
                                                 <Card.Text>Harga </Card.Text>
-                                                <Card.Title className="cost">IDR 230K</Card.Title>
+                                                {/* <Card.Title className="cost">IDR 230K</Card.Title> */}
+                                                <Link to="/keranjang"> IDR 230K</Link>
                                             </Col>
                                         </Row>
                                     </Card.Body>
@@ -115,7 +119,8 @@ const menuPage = () => {
                                             </Col>
                                             <Col lg={6}>
                                                 <Card.Text>Harga </Card.Text>
-                                                <Card.Title className="cost">IDR 205K</Card.Title>
+                                                {/* <Card.Title className="cost">IDR 205K</Card.Title> */}
+                                                <Link to="/keranjang"> IDR 205K</Link>
                                             </Col>
                                         </Row>
                                     </Card.Body>
@@ -132,7 +137,8 @@ const menuPage = () => {
                                             </Col>
                                             <Col lg={6}>
                                                 <Card.Text>Harga </Card.Text>
-                                                <Card.Title className="cost">IDR 220K</Card.Title>
+                                                {/* <Card.Title className="cost">IDR 220K</Card.Title> */}
+                                                <Link to="/keranjang"> IDR 220K</Link>
                                             </Col>
 
                                         </Row>
@@ -150,7 +156,8 @@ const menuPage = () => {
                                             </Col>
                                             <Col lg={6}>
                                                 <Card.Text>Harga </Card.Text>
-                                                <Card.Title className="cost">IDR 300K</Card.Title>
+                                                {/* <Card.Title className="cost">IDR 300K</Card.Title> */}
+                                                <Link to="/keranjang"> IDR 300K</Link>
                                             </Col>
                                         </Row>
                                     </Card.Body>
@@ -167,7 +174,8 @@ const menuPage = () => {
                                             </Col>
                                             <Col lg={6}>
                                                 <Card.Text>Harga </Card.Text>
-                                                <Card.Title className="cost">IDR 25K</Card.Title>
+                                                {/* <Card.Title className="cost">IDR 25K</Card.Title> */}
+                                                <Link to="/keranjang"> IDR 25K</Link>
                                             </Col>
                                         </Row>
                                     </Card.Body>

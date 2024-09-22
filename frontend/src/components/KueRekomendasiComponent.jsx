@@ -1,4 +1,5 @@
 import { Container, Row, Col, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 
 const KueRekomendasi = () => {
@@ -18,7 +19,8 @@ const KueRekomendasi = () => {
                                         </Col>
                                         <Col lg={6}>
                                             <Card.Text>Mulai dari</Card.Text>
-                                            <Card.Title className="cost">IDR 220K</Card.Title>
+                                            {/* <Card.Title className="cost">IDR 220K</Card.Title> */}
+                                            <Link to="/keranjang"> IDR 220K</Link>
                                         </Col>
                                     </Row>
                                 </Card.Body>
@@ -35,7 +37,8 @@ const KueRekomendasi = () => {
                                         </Col>
                                         <Col lg={6}>
                                             <Card.Text>Mulai dari</Card.Text>
-                                            <Card.Title className="cost">IDR 25k</Card.Title>
+                                            {/* <Card.Title className="cost">IDR 25k</Card.Title> */}
+                                            <Link to="/keranjang"> IDR 25K</Link>
                                         </Col>
 
                                     </Row>
@@ -53,7 +56,8 @@ const KueRekomendasi = () => {
                                         </Col>
                                         <Col lg={6}>
                                             <Card.Text>Mulai dari</Card.Text>
-                                            <Card.Title className="cost">IDR 35k</Card.Title>
+                                            {/* <Card.Title className="cost">IDR 35k</Card.Title> */}
+                                            <Link to="/keranjang"> IDR 35K</Link>
                                         </Col>
                                     </Row>
                                 </Card.Body>
@@ -70,7 +74,8 @@ const KueRekomendasi = () => {
                                         </Col>
                                         <Col lg={6}>
                                             <Card.Text>Mulai dari</Card.Text>
-                                            <Card.Title className="cost">IDR 90k</Card.Title>
+                                            {/* <Card.Title className="cost">IDR 90k</Card.Title> */}
+                                            <Link to="/keranjang"> IDR 90K</Link>
                                         </Col>
                                     </Row>
                                 </Card.Body>

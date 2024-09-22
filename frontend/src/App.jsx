@@ -13,6 +13,7 @@ import profilPage from "./pages/profilPage";
 import infoPage from "./pages/infoPage";
 import bayarPage from "./pages/bayarPage";
 import konfirmasiPage from "./pages/konfirmasiPage";
+import detailPage from "./pages/detailPage";
 
 
   
@@ -32,6 +33,7 @@ function App() {
       <Route path="/bayar" Component={bayarPage} />
       <Route path="/konfirmasi" Component={konfirmasiPage} />
       <Route path="/profil" Component={profilPage} />
+      <Route path="/detail" Component={detailPage} />
 
       
       

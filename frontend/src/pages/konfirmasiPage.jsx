@@ -28,13 +28,18 @@ const konfirmasiPage = () => {
                                 <img src="../src/assets/bankbri.png" alt="" />
 
                                 <Row>
-                                    <Col lg={6}>
-                                        <p>Tanngal pengambilan</p>
-                                        <h5>Senin, 15 Agustus 2024</h5>
-                                    </Col>
-                                    <Col lg={6}>
+                                    <Col lg={12}>
                                         <p>Waktu pengambilan</p>
                                         <h5>11.00</h5>
+                                    </Col>
+                                </Row>
+                                <hr />
+                                <Row className="mt-3">
+                                    <Col lg={6}>
+                                        <h6>Transfer Bank : Bank Bri <b>147258369</b> </h6>
+                                    </Col>
+                                    <Col lg={6}>
+                                        <h6 className="text-secondary">Total pembayaran : <b className="text-dark"> IDR 205.000</b></h6>
                                     </Col>
                                 </Row>
                                 <hr />
@@ -50,7 +55,7 @@ const konfirmasiPage = () => {
                             </Card>
 
                             <div className="opsi mt-3">
-                                <Button href="/home" variant="btn btn-utama">Ke Beranda</Button>
+                                <Button href="/profil" variant="btn btn-utama">LIhat pesanan</Button>
                             </div>
 
                         </Col>

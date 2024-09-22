@@ -51,7 +51,7 @@ const profilPage = () => {
                         </Col>
                         <Col lg={6}>
                         <p>Status</p>
-                        <h6 className="lunas">Lunas</h6>
+                        <h6 className="lunas">Belum bayar</h6>
                         </Col>
                     </Row>
                 </Card>
@@ -87,7 +87,7 @@ const profilPage = () => {
                     </Col>
                     <Col lg={6}>
                     <p>Status</p>
-                    <h6 className="selesai">Selesai</h6>
+                    <h6 className="selesai">Sudah Bayar</h6>
                     </Col>
                 </Row>
             </Card>

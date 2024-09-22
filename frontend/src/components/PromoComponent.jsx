@@ -9,7 +9,7 @@ const PromoComponent = () => {
                         <Col lg={4}>
                             <img src="../src/assets/ic-promo.png" alt="" className="ic-promo" />
                             <h1>Promo kue terbaik untuk kamu</h1>
-                            <Button className="btn-biru">Pesan Sekarang</Button>
+                            <Button className="btn-biru" >Pesan Sekarang</Button>
                         </Col>
                         <Col lg={4}>
                             <img src="../src/assets/img-promo1.png" alt="" />

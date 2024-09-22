@@ -74,39 +74,7 @@ const bayarPage = () => {
                             {activeKey === "Bni" && renderContent()}
                             {activeKey === "Bca" && renderContent()}
                         </Col>
-                        <Col lg={4}>
-                            <Card className="rincian">
-
-
-                                <Row>
-                                    <Col lg={6}>
-                                        <p>nama kue</p>
-                                        <h5>cheese cake</h5>
-                                    </Col>
-                                    <Col lg={6}>
-                                        <p>nama pemesan</p>
-                                        <h5>Budi</h5>
-                                    </Col>
-                                </Row>
-                                <hr />
-                                <p>Pilihan Pembayaran</p>
-                                <img src="../src/assets/bankbri.png" alt="" />
-                                <p>Tanggal pengambilan</p>
-                                <h5>Senin, 15 agustus 2024</h5>
-                                <p>Waktu pengambilan kue</p>
-                                <h5>11.00</h5>
-                                <hr />
-                                <Row className="mt-3">
-                                    <Col lg={6}>
-                                        <h5 className="text-secondary">Total pembayaran</h5>
-                                    </Col>
-                                    <Col lg={6}>
-                                        <h5>IDR 205.000</h5>
-                                    </Col>
-                                </Row>
-                            </Card>
-                            <Button href="/konfirmasi" variant="btn btn-utama mt-3 w-100">selanjutnya</Button>
-                        </Col>
+                        
                     </Row>
                 </Container>
                 <FooterComponent/>
