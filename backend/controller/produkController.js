@@ -5,7 +5,7 @@ const path = require ('path');
 module.exports = {
     index: async (req, res) => {
         try {
-            res.locals.title = 'Onawan | Produk';
+            res.locals.title = 'Dreams | Produk';
             const cake = await Produk.find();
             console.log(cake);
             const alertMsg = req.flash('alertMsg');

@@ -20,6 +20,10 @@ const produkSchema = new mongoose.Schema({
     desckripsi: {
         type: String,
         require: true
+    },
+    isRecomendasi: {
+        type: Boolean,
+        require: true
     }
 })
 

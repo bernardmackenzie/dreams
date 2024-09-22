@@ -5,15 +5,13 @@
 
 
         <div class="row-cols-1">
-            <% if (alert.message !='' ) { %>
+            <% if (alert.message != '') { %>
                 <div class="alert alert-<%= alert.status %>" role="alert">
-                    <%- alert.status=='success' ? `<i class="fas fa-check-square mr-2"></i>`: `<i
-                            class="fas fa-exclamation-triangle"></i>` %>
-                        <%= alert.message %>
+                    <%- alert.status == 'success' ? `<i class="fas fa-check-square mr-2"></i>`: `<i class="fas fa-exclamation-triangle"></i>` %> 
+                    <%= alert.message %>
                 </div>
-                <% } %>
+            <% } %>
         </div>
-        <div class="flash-messages"></div>
         <div class="card shadow mb-4">
             <div class="card-header py-3 ch">
                 <div class="row d-flex">
