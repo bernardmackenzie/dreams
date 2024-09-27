@@ -19,8 +19,8 @@ const TestimoniComponent = () => {
                                     </Col>
                                     <Col md={6}>
                                         <CardBody>
-                                            <p className="card-text">“hadir untuk memenuhi keinginan Anda akan kue yang lezat dan penuh gizi.
-                                                Setiap kue kami dibuat dengan cinta dan menggunakan bahan-bahan terbaik untuk memberikan pengalaman manis. ”</p>
+                                            <p className="card-text">“hadir untuk memenuhi keinginan Anda.
+                                                kue kami dibuat dengan cinta dan memakai bahan-bahan terbaik”</p>
 
                                         </CardBody>
                                     </Col>
@@ -37,8 +37,7 @@ const TestimoniComponent = () => {
                                     <Col md={6}>
                                         <CardBody>
                                             <p className="card-text">“destinasi utama untuk pecinta kue yang mencari kenikmatan premium.
-                                                Dari kue-kue klasik hingga karya seni kue modern,
-                                                kami memiliki ragam pilihan yang dapat memenuhi selera semua orang.”</p>
+                                                Dari kue-kue klasik hingga karya seni kue modern”</p>
 
                                         </CardBody>
                                     </Col>

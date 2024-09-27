@@ -1,4 +1,4 @@
-const Bank = require ('../models/bank');
+const Bank = require ('../models/bank.js');
 
 const fs = require ('fs');
 const path = require ('path');

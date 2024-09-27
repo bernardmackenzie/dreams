@@ -1,4 +1,5 @@
 var express = require('express');
+var router = express.Router();
 const dashboardController = require('../controller/dashboardController');
 const produkController = require('../controller/produkController');
 const pemesananController = require('../controller/pemesananController');
@@ -13,7 +14,18 @@ const produk = require('../models/produk');
 const pemesanan = require('../models/pemesanan');
 const bank = require('../models/bank');
 
-var router = express.Router();
+const{ checkLogin } = require('../middlewares/auth');
+
+
+
+// // register
+// router.get('/register', userController.register);
+// router.post('/auth-register', userController.postRegister)
+// // login
+// router.get('/', userController.login);
+// router.post('/auth-login', userController.authLogin)
+// router.use(checkLogin);
+
 
 /* GET home page. */
 router.get('/dashboard',dashboardController.index);

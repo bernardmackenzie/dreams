@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema ({
-    namaLengkap: {
+    fullname: {
         type: String,
         require: true
     },
-    telepon: {
-        type: Number,
+    phone: {
+        type: String,
         require: true
     },
     email: {
@@ -19,8 +20,15 @@ const userSchema = new mongoose.Schema ({
     },
     role: {
         type: String,
-        enum: ['pelanggan','admin']
+        enum: ['Customer','admin']
     },
+});
+
+userSchema.pre('save' , async function(next){
+    const user = this;
+    if(user.isModified('password')){
+        user.password = await bcrypt.hash(user.password, 8);
+    };
 });
 
 
