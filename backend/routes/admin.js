@@ -16,7 +16,11 @@ const bank = require('../models/bank');
 
 const{ checkLogin } = require('../middlewares/auth');
 
+const { 
 
+    validatePromo, 
+
+} = require('../middlewares/validation');
 
 // // register
 // router.get('/register', userController.register);
@@ -31,9 +35,10 @@ const{ checkLogin } = require('../middlewares/auth');
 router.get('/dashboard',dashboardController.index);
 // produk 
 router.get('/produk',produkController.index);
-router.post('/tambah-produk',upload.single('gambar'),produkController.store);
-router.put('/ubah-produk',upload.single('gambar'),produkController.update);
+router.post('/tambah-produk',upload.single('gambar'),validatePromo,produkController.store);
+router.put('/ubah-produk',upload.single('gambar'),validatePromo,produkController.update);
 router.delete('/delete-produk/:id',produkController.delete);
+
 // pemesanan
 router.get('/pemesanan',pemesananController.index);
 // pembayaran

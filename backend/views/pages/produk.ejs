@@ -5,12 +5,13 @@
 
 
         <div class="row-cols-1">
-            <% if (alert.message != '') { %>
+            <% if (alert.message !='' ) { %>
                 <div class="alert alert-<%= alert.status %>" role="alert">
-                    <%- alert.status == 'success' ? `<i class="fas fa-check-square mr-2"></i>`: `<i class="fas fa-exclamation-triangle"></i>` %> 
-                    <%= alert.message %>
+                    <%- alert.status=='success' ? `<i class="fas fa-check-square mr-2"></i>`: `<i
+                            class="fas fa-exclamation-triangle"></i>` %>
+                        <%= alert.message %>
                 </div>
-            <% } %>
+                <% } %>
         </div>
         <div class="card shadow mb-4">
             <div class="card-header py-3 ch">
@@ -78,6 +79,7 @@
                                                 <th>Harga</th>
                                                 <th>Gambar</th>
                                                 <th>Desckripsi</th>
+                                                <th>isRecommendation</th>
                                                 <th>Action</th>
 
 
@@ -106,6 +108,10 @@
                                                         <%= cake[i].desckripsi %>
                                                     </td>
                                                     <td>
+                                                        <%= cake[i].isRecommendation %>
+                                                    </td>
+
+                                                    <td>
                                                         <button type="button"
                                                             class="btn btn-sm btn-warning text-white btn-edit"
                                                             data-id="<%= cake[i]._id %>"
@@ -113,7 +119,8 @@
                                                             data-kategori="<%= cake[i].kategori %>"
                                                             data-harga="<%= cake[i].harga %>"
                                                             data-gambar="<%= cake[i].gambar %>"
-                                                            data-desckripsi="<%= cake[i].desckripsi %>">
+                                                            data-desckripsi="<%= cake[i].desckripsi %>"
+                                                            data-recommended="<%= cake[i].isRecommendation%>">
                                                             <i class="fa fa-edit"></i>
                                                             Edit
                                                         </button>
@@ -182,6 +189,17 @@
                                                 id="desckripsiProduk" placeholder="add desckripsi" autocomplete="off">
                                             <div class="errorMessage text-danger"></div>
                                         </div>
+                                        <div class="form-group">
+                                            <label for="isRecommendation" class="font-weight-bold">
+                                                Reccomendation</label>
+                                            <select name="isRecommendation" id="isRecommendation"
+                                                class="form-control isRecommendation">
+                                                <option>--Choose One--</option>
+                                                <option value="true"> Yes</option>
+                                                <option value="false"> No</option>
+                                            </select>
+                                            <div class="errorMessage text-danger"></div>
+                                        </div>
 
 
 
@@ -210,7 +228,8 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <form id="produkFormUpdate" enctype="multipart/form-data" action="/admin/ubah-produk?_method=put" method="post">
+                                <form id="produkFormUpdate" enctype="multipart/form-data"
+                                    action="/admin/ubah-produk?_method=put" method="post">
                                     <div class="modal-body">
                                         <input type="" class="form-control id-produk" name="id" readonly>
                                         <div class="form-group">
@@ -248,6 +267,14 @@
                                             <input type="text" class="form-control desckripsi desckripsi-produk"
                                                 name="desckripsiProduk" id="desckripsiProduk"
                                                 placeholder="please add produk desckripsi.." autocomplete="off">
+                                            <div class="errorMessageUpdate text-danger"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="isRecommendation" class="font-weight-bold">
+                                                Reccomendation</label>
+                                            <select name="isRecommendation" id="isRecommendation"
+                                                class="form-control isRecommendation is-recommendation">
+                                            </select>
                                             <div class="errorMessageUpdate text-danger"></div>
                                         </div>
                                     </div>
@@ -292,31 +319,44 @@
 
                     <script>
                         // <!-- Modal Jquery Edit -->
-                       
-                            
-                        
-                        $('#dataTable').on('click', '.btn-edit', function() {
+
+
+
+                        $('#dataTable').on('click', '.btn-edit', function () {
                             $('#editProduk').modal('show');
                             let id = $(this).data('id');
                             let nama = $(this).data('produk');
                             let kategori = $(this).data('kategori');
                             let harga = $(this).data('harga');
                             let desckripsi = $(this).data('desckripsi');
+                            let recommend = $(this).data('recommended');
+
                             console.log(nama);
                             console.log(id);
                             console.log(kategori);
                             console.log(harga);
                             console.log(desckripsi);
-                            
+
                             $('.id-produk').val(id);
                             $('.nama-produk').val(nama);
                             $('.kategori-produk').val(kategori);
                             $('.harga-produk').val(harga);
                             $('.desckripsi-produk').val(desckripsi);
+
+                            let optionRecommendation = `<option>--Choose One--</option>`;
+                            if (recommend) {
+                                optionRecommendation += `<option value="true" selected>Yes</option>`;
+                                optionRecommendation += `<option value="false">No</option>`;
+                            } else {
+                                optionRecommendation += `<option value="true">Yes</option>`;
+                                optionRecommendation += `<option value="false" selected>No</option>`;
+                            }
+
+                            $('.is-recommendation').html(optionRecommendation);
                         });
 
                         // Modal Delete
-                        $('#dataTable').on('click', '.btn-delete', function() {
+                        $('#dataTable').on('click', '.btn-delete', function () {
                             $('#deleteProduk').modal('show');
                             let id = $(this).data('id');
                             console.log(id);
@@ -333,6 +373,99 @@
                                 }, 3000);
                             }
                         });
+
+                        // jquery ajax untuk response validasi
+        $('#promoFormCreate').submit(function(event) {
+            event.preventDefault();
+                let formData = new FormData(this);
+                $.ajax({
+                method: 'POST',
+                url: '/admin/create-promo',
+                async: true,
+                data: formData,
+                contentType: false,
+                processData: false,
+                    success: function(response) {
+                        console.log(response);
+                        if( response.errors && response.errors.length > 0) {
+                            $('.errorMessage').empty();
+                            response.errors.forEach(function(error){
+                                $('.form-control.' + error.path).siblings('.errorMessage').text(error.msg);
+                            });
+                        } else {
+                            $('#createPromo').modal('hide');
+                            let alertMsg = response.alertMsg;
+                            let alertStatus = response.alertStatus;
+
+                            $('.flash-messages').html(
+                                `<div class=" alert alert-` + alertStatus + `"role="alert">` +
+                                (alertStatus === 'success' ? `<i class="fas fa-check-square mr-2"></i>` : ` <i class="fas fa-exlamation-triangle"></i>`)
+                                + alertMsg + `</div>`
+                            );
+
+                            const timerAlert = $('.flash-messages').html();
+                            if( timerAlert !== '') {
+                                setTimeout(function(){
+                                    $('.flash-messages').fadeOut('slow')
+                                }, 3000);
+                            }
+                            location.reload();
+                        }
+                    },
+                    error: function(xhr, textStatus, errorThrown) {
+                        console.error('Error:', errorThrown);
+                        $('.errorFile').text('Bad, please check again your upload.');
+                    }
+                });
+        });
+
+        // validasi form update
+        $('#promoFormUpdate').submit(function(event) {
+            event.preventDefault();
+                let formData = new FormData(this);
+                $.ajax({
+                method: 'POST',
+                url: '/admin/update-promo?_method=put',
+                async: true,
+                data: formData,
+                contentType: false,
+                processData: false,
+                    success: function(response) {
+                        console.log(response);
+                        if( response.errors && response.errors.length > 0) {
+                            $('.errorMessageUpdate').empty();
+                            response.errors.forEach(function(error){
+                                $('.form-control.' + error.path).siblings('.errorMessageUpdate').text(error.msg);
+                            });
+                        } else {
+                            $('#editPromo').modal('hide');
+                            let alertMsg = response.alertMsg;
+                            let alertStatus = response.alertStatus;
+
+                            $('.flash-messages').html(
+                                `<div class=" alert alert-` + alertStatus + `"role="alert">` +
+                                (alertStatus === 'success' ? `<i class="fas fa-check-square mr-2"></i>` : ` <i class="fas fa-exlamation-triangle"></i>`)
+                                + alertMsg + `</div>`
+                            );
+
+                            const timerAlert = $('.flash-messages').html();
+                            if( timerAlert !== '') {
+                                setTimeout(function(){
+                                    $('.flash-messages').fadeOut('slow')
+                                }, 3000);
+                            }
+                            location.reload();
+                        }
+                    },
+                    error: function(xhr, textStatus, errorThrown) {
+                        console.error('Error:', errorThrown);
+                        $('.errorFileUpdate').text('Bad, please check again your upload.');
+                    }
+                });
+        });
+
+
+
                     </script>
                 </div>
                 <!-- End of Main Content -->
