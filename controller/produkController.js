@@ -23,9 +23,9 @@ module.exports = {
 
     store: async (req, res) => {
         try {
-            const { namaProduk, kategori, harga,desckripsi } = req.body;
+            const { namaProduk, kategori, harga,desckripsi,isRecommendation } = req.body;
             // console.log(req.body);
-            await Produk.create({ namaProduk, kategori, harga, gambar: req.file.filename, desckripsi});
+            await Produk.create({ namaProduk, kategori, harga, gambar: req.file.filename, desckripsi,isRecommendation});
             
             req.flash('alertMsg', 'New document has been saved');
             req.flash('alertStatus', 'success');
@@ -59,7 +59,7 @@ module.exports = {
     },
     update: async (req, res) => {
         try {
-            const { id, namaProduk, kategoriProduk, hargaProduk, desckripsiProduk} = req.body;
+            const { id, namaProduk, kategoriProduk, hargaProduk, desckripsiProduk,isRecommendation} = req.body;
             if (req.file !== undefined) {
                 const gambarBaru = req.file.filename;
                 const data_kue = await Produk.findOne({_id:id});
@@ -73,6 +73,7 @@ module.exports = {
                     hargaProduk: hargaProduk,
                     gambar: gambarBaru,
                     desckripsiProduk: desckripsiProduk,
+                    isRecommendation: isRecommendation,
                 });
             } else {
                 await Produk.updateOne({_id:id}, {
@@ -80,6 +81,8 @@ module.exports = {
                     kategoriProduk: kategoriProduk,
                     hargaProduk: hargaProduk,
                     desckripsiProduk: desckripsiProduk,
+                    isRecommendation: isRecommendation,
+
                 });
             }
             req.flash('alertMsg', 'Success, document has been updated');

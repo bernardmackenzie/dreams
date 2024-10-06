@@ -1,7 +1,7 @@
 module.exports = {
     index: async (req, res) => {
         try {
-            res.locals.title = 'Onawan | Pemesanan';
+            res.locals.title = 'Dreams | Pemesanan';
             
             res.render('pages/pemesanan');
         } catch(error) {

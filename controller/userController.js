@@ -1,5 +1,5 @@
 const User = require('../models/user');
-// const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs')
 module.exports = {
     register: async (req, res) => {
         try {
@@ -7,7 +7,7 @@ module.exports = {
             const alertMsg = req.flash('alertMsg');
             const alertStatus = req.flash('alertStatus');
             const alert = { message: alertMsg, status: alertStatus }
-            res.locals.title = 'Onawan | User';
+            res.locals.title = 'Dreams | User';
             res.render('pages/register', { alert });
         } catch (error) {
             console.log(error.message);
@@ -41,7 +41,7 @@ module.exports = {
             const alertMsg = req.flash('alertMsg');
             const alertStatus = req.flash('alertStatus');
             const alert = { message: alertMsg, status: alertStatus }
-            res.locals.title = 'Onawan | User';
+            res.locals.title = 'Dreams | User';
             res.render('pages/login', { alert });
         } catch (error) {
             console.log(error.message);
@@ -93,7 +93,7 @@ authLogin: async (req,res) => {
             const alertStatus = req.flash('alertStatus');
             const alert = { message: alertMsg, status: alertStatus }
             const userSession = req.session.user;
-            res.locals.title = 'Onawan | User';
+            res.locals.title = 'Dreams | User';
             res.locals.onPage = 'user';
             res.render('pages/user', { user, alert,userSession });
         } catch (error) {
@@ -192,7 +192,7 @@ authLogin: async (req,res) => {
                 message: alertMsg,
                 status: alertStatus
             }
-            res.locals.title = 'Onawan | User';
+            res.locals.title = 'Dreams | User';
             res.locals.onPage = 'user';
             res.render('pages/user', { user, alert });
         } catch(error) {
@@ -208,7 +208,7 @@ authLogin: async (req,res) => {
             req.session.destroy();
             res.redirect('/admin')
         } catch (error) {
-
+            console.log(error)
         }
     }
 };

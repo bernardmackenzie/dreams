@@ -13,7 +13,7 @@ module.exports = {
                 message: alertMsg,
                 status: alertStatus
             }
-            res.locals.title = 'Onawan | Testimonial';
+            res.locals.title = 'Dreams | Testimonial';
             res.locals.onPage = 'testimonial';
             res.render('pages/testimonial', {testimonial, alert,userSession});
         } catch(error) {
