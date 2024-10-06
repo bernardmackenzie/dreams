@@ -21,10 +21,11 @@ const produkSchema = new mongoose.Schema({
         type: String,
         require: true
     },
-    isRecomendasi: {
+    isRecommendation: {
         type: Boolean,
-        require: true
-    }
+        default: false
+    },
+    
 })
 
 module.exports = mongoose.model('produk', produkSchema);

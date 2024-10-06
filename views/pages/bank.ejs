@@ -4,69 +4,40 @@
     <div id="content">
 
 
-        <div class="row-cols-1">
-            <% if (alert.message != '') { %>
-                <div class="alert alert-<%= alert.status %>" role="alert">
-                    <%- alert.status == 'success' ? `<i class="fas fa-check-square mr-2"></i>`: `<i class="fas fa-exclamation-triangle"></i>` %> 
-                    <%= alert.message %>
-                </div>
-            <% } %>
-        </div>
-        <div class="card shadow mb-4">
-            <div class="card-header py-3 ch">
-                <div class="row d-flex">
-                    <div class="col">
-                        <h6 class="m-0 font-weight-normal text-white">Bank</h6>
+        <div class="container-fluid">
+            <div class="row-cols-1 mb-4">
+                <h1 class="h3 mb-0 text-gray-800">Bank</h1>
+            </div>
+            <div class="row-cols-1">
+                <% if (alert.message != '') { %>
+                    <div class="alert alert-<%= alert.status %>" role="alert">
+                        <%- alert.status == 'success' ? `<i class="fas fa-check-square mr-2"></i>`: `<i class="fas fa-exclamation-triangle"></i>` %> 
+                        <%= alert.message %>
                     </div>
-
-
-                    <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
-
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
+                <% } %>
+            </div>
+            <div class="flash-messages"></div>
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 bg-danger ">
+                    <div class="row d-flex">
+                        <div class="col">
+                            <h6 class="m-0 font-weight-bold text-white">List Bank</h6>
+                        </div>
+                        <div class="col-4">
+                            <div class="text-right">
+                                <div class="input-group input-group-sm">
+                                    <!-- <input type="text" class="form-control" placeholder="search document"> -->
+                                    <div class="input-group-append">
+                                        <!-- <button type="button" class="btn btn-sm btn-info"><i class="fas fa-search"></i></button> -->
+                                        <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#createBank">
+                                        <i class="fas fa-plus-circle fa-sm text-white-50"></i> Create Data
+                                        </button>
                                     </div>
-                                </form>
+                                </div>
                             </div>
-                        </li>
-
-
-
-                    </ul>
-
-                    </nav>
-                    <!-- End of Topbar -->
-
-                    <!-- Begin Page Content -->
-                    <div class="container-fluid">
-
-
-
-                        <!-- DataTales Example -->
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <button type="button" class="btn btn-sm btn-warning" data-toggle="modal"
-                                    data-target="#createBank">
-                                    <i class="fas fa-plus-circle fa-sm text-white"></i> Create Data
-                                </button>
-                            </div>
+                        </div>
+                    </div>
+                </div>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -103,19 +74,19 @@
                                                     </td>
 
                                                     <td>
-                                                        <button type="button"
-                                                            class="btn btn-sm btn-warning text-white btn-edit"
+                                                        <button type="button" title="ubah"
+                                                            class="btn btn-sm btn-success text-white btn-edit"
                                                             data-id="<%= cake[i]._id %>" data-nama="<%= cake[i].nama %>"
                                                             data-gambar="<%= cake[i].gambar %>"
                                                             data-nomor="<%= cake[i].nomorAkun %>"
                                                             data-akun="<%= cake[i].pemilikAkun %>">
                                                             <i class="fa fa-edit"></i>
-                                                            Edit
+                                                            
                                                         </button>
-                                                        <button type="button" class="btn btn-sm btn-danger btn-delete"
+                                                        <button type="button" title="hapus" class="btn btn-sm btn-danger btn-delete"
                                                             data-id="<%= cake[i]._id %>">
                                                             <i class="fa fa-trash"></i>
-                                                            Delete
+                                                            
                                                         </button>
                                                     </td>
                                                 </tr>

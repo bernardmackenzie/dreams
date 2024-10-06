@@ -2,18 +2,34 @@ const mongoose = require('mongoose');
 const { ObjectId } = mongoose.Schema;
 const keranjangSchema = new mongoose.Schema({
     
-    produkId: {
-        type: String,
+    userId: {
+        type: ObjectId,
+        ref: 'user',
         require: true
     },
+    items :[
+        {
+            produkId: {
+                type: ObjectId,
+                ref: 'produk',
+                require: true
+            },
+            qty: {
+                type: Number,
+                require: true
+            },
+            subTotal: {
+                type: Number,
+                require: true
+            }
+        }
+    ],
     totalBayar: {
-        type: String,
+        type: Number,
         require: true
-    },
-    jumlah: {
-        type: String,
-        require: true
-    },
+    }
+
+    
 })
 
 module.exports = mongoose.model('keranjang', keranjangSchema);

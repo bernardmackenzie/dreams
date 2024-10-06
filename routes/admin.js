@@ -16,15 +16,16 @@ const bank = require('../models/bank');
 
 const{ checkLogin } = require('../middlewares/auth');
 
-
+// x
 
 // // register
-// router.get('/register', userController.register);
-// router.post('/auth-register', userController.postRegister)
+router.get('/register', userController.register);
+router.post('/auth-register', userController.postRegister)
 // // login
-// router.get('/', userController.login);
-// router.post('/auth-login', userController.authLogin)
-// router.use(checkLogin);
+router.get('/', userController.login);
+router.post('/auth-login', userController.authLogin)
+router.use(checkLogin);
+
 
 
 /* GET home page. */
@@ -34,12 +35,15 @@ router.get('/produk',produkController.index);
 router.post('/tambah-produk',upload.single('gambar'),produkController.store);
 router.put('/ubah-produk',upload.single('gambar'),produkController.update);
 router.delete('/delete-produk/:id',produkController.delete);
+
 // pemesanan
 router.get('/pemesanan',pemesananController.index);
 // pembayaran
 router.get('/pembayaran',pembayaranController.index);
 // user 
 router.get('/user',userController.index);
+router.put('/update-user', userController.update);
+
 // keranjang 
 router.get('/keranjang',keranjangController.index);
 // bank 
@@ -59,4 +63,6 @@ router.put('/update-testimonial',upload.single('image'),testimonialController.up
 router.delete('/delete-testimonial/:id', testimonialController.delete);
 
 
+// logout
+router.get('/logout', userController.logout);
 module.exports = router;

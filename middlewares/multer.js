@@ -2,7 +2,7 @@ const multer = require('multer');
 const path = require('path');
 
 const storage = multer.diskStorage({
-    destination: function(req, file, cb) {
+    promo: function(req, file, cb) {
         let uploadPath = '';
         if (file.mimetype.startsWith('image/')) {
             uploadPath = 'public/images';

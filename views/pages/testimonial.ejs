@@ -1,38 +1,38 @@
 <%- include('../components/head.ejs') %>
-    <div class="container-fluid">
-        <div class="row-cols-1 mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Testimonial</h1>
-        </div>
-        <div class="row-cols-1">
-            <% if (alert.message != '') { %>
-                <div class="alert alert-<%= alert.status %>" role="alert">
-                    <%- alert.status == 'success' ? `<i class="fas fa-check-square mr-2"></i>`: `<i class="fas fa-exclamation-triangle"></i>` %> 
-                    <%= alert.message %>
+<div class="container-fluid">
+    <div class="row-cols-1 mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Testimonial</h1>
+    </div>
+    <div class="row-cols-1">
+        <% if (alert.message != '') { %>
+            <div class="alert alert-<%= alert.status %>" role="alert">
+                <%- alert.status == 'success' ? `<i class="fas fa-check-square mr-2"></i>`: `<i class="fas fa-exclamation-triangle"></i>` %> 
+                <%= alert.message %>
+            </div>
+        <% } %>
+    </div>
+    <div class="flash-messages"></div>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 bg-danger ">
+            <div class="row d-flex">
+                <div class="col">
+                    <h6 class="m-0 font-weight-bold text-white">List Testimonial</h6>
                 </div>
-            <% } %>
-        </div>
-        <div class="flash-messages"></div>
-        <div class="card shadow mb-4">
-            <div class="card-header py-3 bg-info ">
-                <div class="row d-flex">
-                    <div class="col">
-                        <h6 class="m-0 font-weight-bold text-white">List Testimonials</h6>
-                    </div>
-                    <div class="col-4">
-                        <div class="text-right">
-                            <div class="input-group input-group-sm">
-                                <!-- <input type="text" class="form-control" placeholder="search document"> -->
-                                <div class="input-group-append">
-                                    <!-- <button type="button" class="btn btn-sm btn-info"><i class="fas fa-search"></i></button> -->
-                                    <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#createTestimonial">
-                                    <i class="fas fa-plus-circle fa-sm text-white-50"></i> Create Data
-                                    </button>
-                                </div>
+                <div class="col-4">
+                    <div class="text-right">
+                        <div class="input-group input-group-sm">
+                            <!-- <input type="text" class="form-control" placeholder="search document"> -->
+                            <div class="input-group-append">
+                                <!-- <button type="button" class="btn btn-sm btn-info"><i class="fas fa-search"></i></button> -->
+                                <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#createTestimonial">
+                                <i class="fas fa-plus-circle fa-sm text-white-50"></i> Buat Data
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
             
             <div class="card-body">
                 <div class="table-responsive">
@@ -41,11 +41,11 @@
                             <tr>
                                 <th>No</th>
                                 <th>Id</th>
-                                <th>Image</th>
-                                <th>Fullname</th>
+                                <th>Gambar</th>
+                                <th>NamaLengkap</th>
                                 <th>Status</th>
-                                <th>Content</th>
-                                <th>Action</th>
+                                <th>Konten</th>
+                                <th>aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -60,7 +60,7 @@
                                     <td><%= testimonial[i].status %></td>
                                     <td><%= testimonial[i].content %></td>
                                     <td>
-                                        <button type="button" class="btn btn-sm bg-info text-white btn-edit"
+                                        <button type="button" title="ubah" class="btn btn-sm bg-success text-white btn-edit"
                                         data-id = "<%= testimonial[i]._id %>"
                                         data-image = "<%= testimonial[i].image %>"
                                         data-fullname = "<%= testimonial[i].fullname %>"
@@ -69,13 +69,13 @@
                                         
                                         >
                                             <i class="fa fa-edit"></i>
-                                            Edit
+                                            
                                         </button>
-                                        <button type="button" class="btn btn-sm btn-danger btn-delete"
+                                        <button type="button" title="hapus" class="btn btn-sm btn-danger btn-delete"
                                         data-id = "<%= testimonial[i]._id %>"
                                         >
                                             <i class="fa fa-trash"></i>
-                                            Delete
+                                            
                                         </button>
                                     </td>
                                 </tr>

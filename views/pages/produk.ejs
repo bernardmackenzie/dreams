@@ -1,72 +1,41 @@
 <%- include('../components/head.ejs') %>
 
-    <!-- Main Content -->
-    <div id="content">
 
-
-        <div class="row-cols-1">
-            <% if (alert.message != '') { %>
-                <div class="alert alert-<%= alert.status %>" role="alert">
-                    <%- alert.status == 'success' ? `<i class="fas fa-check-square mr-2"></i>`: `<i class="fas fa-exclamation-triangle"></i>` %> 
-                    <%= alert.message %>
+<div id="content">
+<div class="container-fluid">
+    <div class="row-cols-1 mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Produk</h1>
+    </div>
+    <div class="row-cols-1">
+        <% if (alert.message != '') { %>
+            <div class="alert alert-<%= alert.status %>" role="alert">
+                <%- alert.status == 'success' ? `<i class="fas fa-check-square mr-2"></i>`: `<i class="fas fa-exclamation-triangle"></i>` %> 
+                <%= alert.message %>
+            </div>
+        <% } %>
+    </div>
+    <div class="flash-messages"></div>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 bg-danger ">
+            <div class="row d-flex">
+                <div class="col">
+                    <h6 class="m-0 font-weight-bold text-white">List Produk</h6>
                 </div>
-            <% } %>
-        </div>
-        <div class="card shadow mb-4">
-            <div class="card-header py-3 ch">
-                <div class="row d-flex">
-                    <div class="col">
-                        <h6 class="m-0 font-weight-normal text-white">Produk</h6>
-                    </div>
-
-
-                    <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
-
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
-
-
-
-                    </ul>
-
-                    </nav>
-                    <!-- End of Topbar -->
-
-                    <!-- Begin Page Content -->
-                    <div class="container-fluid">
-
-
-
-                        <!-- DataTales Example -->
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <button type="button" class="btn btn-sm btn-warning" data-toggle="modal"
-                                    data-target="#createProduk">
-                                    <i class="fas fa-plus-circle fa-sm text-white"></i> Create Data
+                <div class="col-4">
+                    <div class="text-right">
+                        <div class="input-group input-group-sm">
+                            <!-- <input type="text" class="form-control" placeholder="search document"> -->
+                            <div class="input-group-append">
+                                <!-- <button type="button" class="btn btn-sm btn-info"><i class="fas fa-search"></i></button> -->
+                                <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#createProduk">
+                                <i class="fas fa-plus-circle fa-sm text-white-50"></i> Buat Data
                                 </button>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -77,8 +46,9 @@
                                                 <th>kategori</th>
                                                 <th>Harga</th>
                                                 <th>Gambar</th>
-                                                <th>Desckripsi</th>
-                                                <th>Action</th>
+                                                <th>Deskripsi</th>
+                                                <th>Recomendasi</th>
+                                                <th>Aksi</th>
 
 
                                             </tr>
@@ -106,21 +76,26 @@
                                                         <%= cake[i].desckripsi %>
                                                     </td>
                                                     <td>
-                                                        <button type="button"
-                                                            class="btn btn-sm btn-warning text-white btn-edit"
+                                                        <%= cake[i].isRecommendation %>
+                                                    </td>
+
+                                                    <td>
+                                                        <button type="button" title="ubah"
+                                                            class="btn btn-sm btn-success text-white btn-edit"
                                                             data-id="<%= cake[i]._id %>"
                                                             data-produk="<%= cake[i].namaProduk %>"
                                                             data-kategori="<%= cake[i].kategori %>"
                                                             data-harga="<%= cake[i].harga %>"
                                                             data-gambar="<%= cake[i].gambar %>"
-                                                            data-desckripsi="<%= cake[i].desckripsi %>">
+                                                            data-desckripsi="<%= cake[i].desckripsi %>"
+                                                            data-recommended="<%= cake[i].isRecommendation%>">
                                                             <i class="fa fa-edit"></i>
-                                                            Edit
+                                                            
                                                         </button>
-                                                        <button type="button" class="btn btn-sm btn-danger btn-delete"
+                                                        <button type="button" title="hapus" class="btn btn-sm btn-danger btn-delete"
                                                             data-id="<%= cake[i]._id %>">
                                                             <i class="fa fa-trash"></i>
-                                                            Delete
+                                                            
                                                         </button>
                                                     </td>
                                                 </tr>
@@ -155,31 +130,42 @@
                                         <div class="form-group">
                                             <label for="namaProduk" class="font-weight-bold"> namaProduk </label>
                                             <input type="text" class="form-control namaProduk" name="namaProduk"
-                                                id="namaProduk" placeholder="add namaProduk" autocomplete="off">
+                                                id="namaProduk" placeholder="Tambah namaProduk" autocomplete="off">
                                             <div class="errorMessage text-danger"></div>
                                         </div>
                                         <div class="form-group">
                                             <label for="kategoriProduk" class="font-weight-bold"> kategori </label>
                                             <input type="text" class="form-control kategori" name="kategori"
-                                                id="kategoriProduk" placeholder="add kategori" autocomplete="off">
+                                                id="kategoriProduk" placeholder="Tambah kategori" autocomplete="off">
                                             <div class="errorMessage text-danger"></div>
                                         </div>
                                         <div class="form-group">
                                             <label for="hargaProduk" class="font-weight-bold"> harga </label>
                                             <input type="text" class="form-control harga" name="harga" id="hargaProduk"
-                                                placeholder="add harga" autocomplete="off">
+                                                placeholder="Tambah harga" autocomplete="off">
                                             <div class="errorMessage text-danger"></div>
                                         </div>
                                         <div class="form-group">
                                             <label for="gambarProduk" class="font-weight-bold"> gambar </label>
                                             <input type="file" class="form-control gambar" name="gambar"
-                                                id="gambarProduk" placeholder="add gambar" autocomplete="off">
+                                                id="gambarProduk" placeholder="Tambah gambar" autocomplete="off">
                                             <div class="errorMessage text-danger"></div>
                                         </div>
                                         <div class="form-group">
                                             <label for="desckripsiProduk" class="font-weight-bold"> desckripsi </label>
                                             <input type="text" class="form-control desckripsi" name="desckripsi"
-                                                id="desckripsiProduk" placeholder="add desckripsi" autocomplete="off">
+                                                id="desckripsiProduk" placeholder="Tambah desckripsi" autocomplete="off">
+                                            <div class="errorMessage text-danger"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="isRecommendation" class="font-weight-bold">
+                                                Reccomendation</label>
+                                            <select name="isRecommendation" id="isRecommendation"
+                                                class="form-control isRecommendation">
+                                                <option>--Pilih Satu--</option>
+                                                <option value="true"> Iya</option>
+                                                <option value="false"> Tidak</option>
+                                            </select>
                                             <div class="errorMessage text-danger"></div>
                                         </div>
 
@@ -210,13 +196,14 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <form id="produkFormUpdate" enctype="multipart/form-data" action="/admin/ubah-produk?_method=put" method="post">
+                                <form id="produkFormUpdate" enctype="multipart/form-data"
+                                    action="/admin/ubah-produk?_method=put" method="post">
                                     <div class="modal-body">
                                         <input type="" class="form-control id-produk" name="id" readonly>
                                         <div class="form-group">
                                             <label for="namaProduk" class="font-weight-bold"> namaProduk </label>
                                             <input type="text" class="form-control nama nama-produk" name="namaProduk"
-                                                id="namaProduk" placeholder="please add produk nama.."
+                                                id="namaProduk" placeholder="Tolong isi nama produk.."
                                                 autocomplete="off">
                                             <div class="errorMessageUpdate text-danger"></div>
                                         </div>
@@ -224,14 +211,14 @@
                                             <label for="kategoriProduk" class="font-weight-bold"> Kategori </label>
                                             <input type="text" class="form-control kategori kategori-produk"
                                                 name="kategoriProduk" id="kategoriProduk"
-                                                placeholder="please add produk kategori.." autocomplete="off">
+                                                placeholder="Tolong isi kategori produk.." autocomplete="off">
                                             <div class="errorMessageUpdate text-danger"></div>
                                         </div>
                                         <div class="form-group">
                                             <label for="hargaProduk" class="font-weight-bold"> harga </label>
                                             <input type="text" class="form-control harga harga-produk"
                                                 name="hargaProduk" id="hargaProduk"
-                                                placeholder="please add produk harga.." autocomplete="off">
+                                                placeholder="Tolong isi harga produk.." autocomplete="off">
                                             <div class="errorMessageUpdate text-danger"></div>
                                         </div>
                                         <div class="form-group">
@@ -240,14 +227,21 @@
                                                 id="gambarUpdateProduk" autocomplete="off">
                                             <div class="errorMessageUpdate text-danger"></div>
                                             <div class="errorFileUpdate text-danger"></div>
-                                            <img src="" class="previewImg mt-2" id="previewImg" width="150vh"
-                                                alt="preview">
+
                                         </div>
                                         <div class="form-group">
                                             <label for="desckripsiProduk" class="font-weight-bold"> desckripsi </label>
                                             <input type="text" class="form-control desckripsi desckripsi-produk"
                                                 name="desckripsiProduk" id="desckripsiProduk"
-                                                placeholder="please add produk desckripsi.." autocomplete="off">
+                                                placeholder="Tolong isi desckripsi produk.." autocomplete="off">
+                                            <div class="errorMessageUpdate text-danger"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="isRecommendation" class="font-weight-bold">
+                                                Reccomendation</label>
+                                            <select name="isRecommendation" id="isRecommendation"
+                                                class="form-control isRecommendation is-recommendation">
+                                            </select>
                                             <div class="errorMessageUpdate text-danger"></div>
                                         </div>
                                     </div>
@@ -292,31 +286,44 @@
 
                     <script>
                         // <!-- Modal Jquery Edit -->
-                       
-                            
-                        
-                        $('#dataTable').on('click', '.btn-edit', function() {
+
+
+
+                        $('#dataTable').on('click', '.btn-edit', function () {
                             $('#editProduk').modal('show');
                             let id = $(this).data('id');
                             let nama = $(this).data('produk');
                             let kategori = $(this).data('kategori');
                             let harga = $(this).data('harga');
                             let desckripsi = $(this).data('desckripsi');
+                            let recommend = $(this).data('recommended');
+
                             console.log(nama);
                             console.log(id);
                             console.log(kategori);
                             console.log(harga);
                             console.log(desckripsi);
-                            
+
                             $('.id-produk').val(id);
                             $('.nama-produk').val(nama);
                             $('.kategori-produk').val(kategori);
                             $('.harga-produk').val(harga);
                             $('.desckripsi-produk').val(desckripsi);
+
+                            let optionRecommendation = `<option>--Choose One--</option>`;
+                            if (recommend) {
+                                optionRecommendation += `<option value="true" selected>Yes</option>`;
+                                optionRecommendation += `<option value="false">No</option>`;
+                            } else {
+                                optionRecommendation += `<option value="true">Yes</option>`;
+                                optionRecommendation += `<option value="false" selected>No</option>`;
+                            }
+
+                            $('.is-recommendation').html(optionRecommendation);
                         });
 
                         // Modal Delete
-                        $('#dataTable').on('click', '.btn-delete', function() {
+                        $('#dataTable').on('click', '.btn-delete', function () {
                             $('#deleteProduk').modal('show');
                             let id = $(this).data('id');
                             console.log(id);
@@ -333,6 +340,99 @@
                                 }, 3000);
                             }
                         });
+
+                        // jquery ajax untuk response validasi
+        $('#promoFormCreate').submit(function(event) {
+            event.preventDefault();
+                let formData = new FormData(this);
+                $.ajax({
+                method: 'POST',
+                url: '/admin/create-promo',
+                async: true,
+                data: formData,
+                contentType: false,
+                processData: false,
+                    success: function(response) {
+                        console.log(response);
+                        if( response.errors && response.errors.length > 0) {
+                            $('.errorMessage').empty();
+                            response.errors.forEach(function(error){
+                                $('.form-control.' + error.path).siblings('.errorMessage').text(error.msg);
+                            });
+                        } else {
+                            $('#createPromo').modal('hide');
+                            let alertMsg = response.alertMsg;
+                            let alertStatus = response.alertStatus;
+
+                            $('.flash-messages').html(
+                                `<div class=" alert alert-` + alertStatus + `"role="alert">` +
+                                (alertStatus === 'success' ? `<i class="fas fa-check-square mr-2"></i>` : ` <i class="fas fa-exlamation-triangle"></i>`)
+                                + alertMsg + `</div>`
+                            );
+
+                            const timerAlert = $('.flash-messages').html();
+                            if( timerAlert !== '') {
+                                setTimeout(function(){
+                                    $('.flash-messages').fadeOut('slow')
+                                }, 3000);
+                            }
+                            location.reload();
+                        }
+                    },
+                    error: function(xhr, textStatus, errorThrown) {
+                        console.error('Error:', errorThrown);
+                        $('.errorFile').text('Bad, please check again your upload.');
+                    }
+                });
+        });
+
+        // validasi form update
+        $('#promoFormUpdate').submit(function(event) {
+            event.preventDefault();
+                let formData = new FormData(this);
+                $.ajax({
+                method: 'POST',
+                url: '/admin/update-promo?_method=put',
+                async: true,
+                data: formData,
+                contentType: false,
+                processData: false,
+                    success: function(response) {
+                        console.log(response);
+                        if( response.errors && response.errors.length > 0) {
+                            $('.errorMessageUpdate').empty();
+                            response.errors.forEach(function(error){
+                                $('.form-control.' + error.path).siblings('.errorMessageUpdate').text(error.msg);
+                            });
+                        } else {
+                            $('#editPromo').modal('hide');
+                            let alertMsg = response.alertMsg;
+                            let alertStatus = response.alertStatus;
+
+                            $('.flash-messages').html(
+                                `<div class=" alert alert-` + alertStatus + `"role="alert">` +
+                                (alertStatus === 'success' ? `<i class="fas fa-check-square mr-2"></i>` : ` <i class="fas fa-exlamation-triangle"></i>`)
+                                + alertMsg + `</div>`
+                            );
+
+                            const timerAlert = $('.flash-messages').html();
+                            if( timerAlert !== '') {
+                                setTimeout(function(){
+                                    $('.flash-messages').fadeOut('slow')
+                                }, 3000);
+                            }
+                            location.reload();
+                        }
+                    },
+                    error: function(xhr, textStatus, errorThrown) {
+                        console.error('Error:', errorThrown);
+                        $('.errorFileUpdate').text('Bad, please check again your upload.');
+                    }
+                });
+        });
+
+
+
                     </script>
                 </div>
                 <!-- End of Main Content -->

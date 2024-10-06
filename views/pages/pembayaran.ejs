@@ -1,63 +1,40 @@
 <%- include('../components/head.ejs') %>
 
-    <!-- Main Content -->
-    <div id="content">
+<div class="container-fluid">
+    <div class="row-cols-1 mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Pembayaran</h1>
+    </div>
+    
+        <!-- alert -->
 
-
-
-
-
-        <!-- Topbar Navbar -->
-        <ul class="navbar-nav ml-auto">
-
-            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-            <li class="nav-item dropdown no-arrow d-sm-none">
-                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-search fa-fw"></i>
-                </a>
-                <!-- Dropdown - Messages -->
-                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                    aria-labelledby="searchDropdown">
-                    <form class="form-inline mr-auto w-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
+    <div class="flash-messages"></div>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 bg-danger ">
+            <div class="row d-flex">
+                <div class="col">
+                    <h6 class="m-0 font-weight-bold text-white">List Pembayaran</h6>
+                </div>
+                <div class="col-4">
+                    <div class="text-right">
+                        <div class="input-group input-group-sm">
+                            <!-- <input type="text" class="form-control" placeholder="search document"> -->
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
+                                <!-- <button type="button" class="btn btn-sm btn-info"><i class="fas fa-search"></i></button> -->
+                                <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#createProduk">
+                                <i class="fas fa-plus-circle fa-sm text-white-50"></i> Buat Data
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
-            </li>
-
-
-
-        </ul>
-
-        </nav>
-        <!-- End of Topbar -->
-
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
-
-
-
-            <!-- DataTales Example -->
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#createpembayaran">
-                        <i class="fas fa-plus-circle fa-sm text-white"></i> Create Data
-                        </button>
-                </div>
+            </div>
+        </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>pemesananId</th>
+                                    <th>PembayaranId</th>
                                     <th>metodeBayarId</th>
                                     <th>Harga</th>
                                     <th>Tanggal</th>
@@ -105,9 +82,9 @@
                 <div class="modal-body">     
                     
                     <div class="form-group">
-                        <label for="pemesananIdPembayaran" class="font-weight-bold"> pemesananId </label>
-                        <input type="text" class="form-control pemesananId" name="pemesananId" id="pemesananIdPembayaran"
-                            placeholder="add pemesananId" autocomplete="off">
+                        <label for="PembayaranIdPembayaran" class="font-weight-bold"> PembayaranId </label>
+                        <input type="text" class="form-control PembayaranId" name="PembayaranId" id="PembayaranIdPembayaran"
+                            placeholder="add PembayaranId" autocomplete="off">
                         <div class="errorMessage text-danger"></div>
                     </div>
                     <div class="form-group">
@@ -148,6 +125,4 @@
     </div>
 </div>
 
-    </div>
-    <!-- End of Main Content -->
     <%- include('../components/bottom.ejs') %>
